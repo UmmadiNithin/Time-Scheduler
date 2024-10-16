@@ -53,6 +53,6 @@ bookingAppointment("doctor2", "saleem")
 
 bookingAppointment("doctor1", "dharani")
 
-// const { names, count } = listDoctors()
-// console.log(`Doctors Names: ${names.join(', ')}`)
-// console.log(`Total number of doctors Available: ${count}`)
+const { names, count } = listDoctors()
+console.log(`Doctors Names: ${names.join(', ')}`)
+console.log(`Total number of doctors Available: ${count}`)

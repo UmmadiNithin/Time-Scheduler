@@ -146,7 +146,7 @@ const cancelBooking = async (doctorName, timeSlot, userName, date) => {
 }
 
 
-//createTimeSlotsWithInterval("Dr. Nithin", 10, 18, 1)
+// createTimeSlotsWithInterval("Dr. Nithin", 10, 18, 1)
 // availableSlots("Dr. Nithin")
 // bookDoctorSlot("Dr. Nithin", { startTime: "10:00", endTime: "11:00" }, "deepak", "2024-10-16")
 // cancelBooking("Dr. Nithin", { startTime: "10:00", endTime: "11:00" }, "deepak", "2024-10-16")

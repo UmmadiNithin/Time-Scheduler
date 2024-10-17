@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Doctor Schedule Management</h1>
+
+        <section>
+            <h2>Create Time Slots</h2>
+            <form id="create-slots-form">
+                <label for="doctor-name">Doctor Name:</label>
+                <input type="text" id="doctor-name" required>
+
+                <label for="start-hour">Start Hour (0-24):</label>
+                <input type="number" id="start-hour" min="0" max="24" required>
+
+                <label for="end-hour">End Hour (0-24):</label>
+                <input type="number" id="end-hour" min="0" max="24" required>
+
+                <label for="interval">Interval (Hours):</label>
+                <input type="number" id="interval" min="1" required>
+
+                <button  id="changecolor" type="submit">Create Slots</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>View All Available Slots</h2>
+            <button id="view-all-slots-btn">View All Slots</button>
+            <div id="all-available-slots"></div>
+        </section>
+
+        <section>
+            <h2>View Available Slots</h2>
+            <form id="view-slots-form">
+                <label for="view-doctor-name">Doctor Name:</label>
+                <input type="text" id="view-doctor-name" required>
+                <button type="submit">View Slots</button>
+            </form>
+            <div id="available-slots" class="slot-container"></div>
+
+        </section>
+
+        <section>
+            <h2>Book a Slot</h2>
+            <form id="book-slot-form">
+                <label for="book-doctor-name">Doctor Name:</label>
+                <select id="book-doctor-name" required>
+                    <option value="" disabled selected>Select a doctor</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+                
+                <label for="available-slots">Select Slot:</label>
+                <select id="book-available-slots" required>
+                    <option value="" disabled selected>Select a slot</option>
+                    <!-- Options will be populated dynamically -->
+                </select>
+                
+                <label for="user-name">Your Name:</label>
+                <input type="text" id="user-name" required>
+                
+                <label for="book-date">Booking Date:</label>
+                <input type="date" id="book-date" required>
+                
+                <button type="submit">Book Slot</button>
+            </form>
+            
+            
+            
+        </section>
+
+
+        
+        <section>
+            <h2>Cancel Booking</h2>
+            <form id="cancel-booking-form">
+                <label for="cancel-doctor-name">Doctor's Name:</label>
+                <select id="cancel-doctor-name" required>
+                    <!-- Options will be populated from your local storage -->
+                </select>
+                
+                <label for="cancel-available-slots">Available Slots:</label>
+                <select id="cancel-available-slots" required>
+                    <option value="" disabled selected>Select a slot</option>
+                    <!-- Options populated dynamically from selected doctor’s slots -->
+                </select>
+            
+                <label for="cancel-user-name">Your Name:</label>
+                <input type="text" id="cancel-user-name" required>
+            
+                <label for="cancel-date">Booking Date:</label>
+                <input type="date" id="cancel-date" required>
+            
+                <button type="submit">Cancel Booking</button>
+            </form>
+            
+        </section>
+    </div>
+
+    
+
+    <div id="myModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);">
+        <div class="modal-content" style="background-color: #ffffff; margin: 15% auto; padding: 10px; border: 1px solid #dcdfe3; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); width: 50%; max-width: 300px;">
+            
+            <div class="modal-header" style="display: flex; justify-content: flex-end; align-items: center; padding-bottom: 5px; position: relative;">
+                <button id="closeModalBtn" style="background: none; border: none; color: #3498db; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            
+            <div class="modal-body" style="display: flex; justify-content: center; align-items: center; padding: 5px; color: #333; font-size: 1rem;">
+                <p id="modalText">Your modal content goes here.</p>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>

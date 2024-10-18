@@ -7,27 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="" id="logo-image" style="height: 50px;">
+            </div>
+            
+            <div class="username-container">
+                <img src="/images/c.png" id="logo-image" style="height: 40px;">
+
+                <span id="logged-in-user">Logged in as: <span id="username-display">Username</span></span>
+
+                <div class="dropdown" id="dropdown-menu">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
     <div class="container">
-        <h1>Doctor Schedule Management</h1>
-
-        <section>
-            <h2>Create Time Slots</h2>
-            <form id="create-slots-form">
-                <label for="doctor-name">Doctor Name:</label>
-                <input type="text" id="doctor-name" required>
-
-                <label for="start-hour">Start Hour (0-24):</label>
-                <input type="number" id="start-hour" min="0" max="24" required>
-
-                <label for="end-hour">End Hour (0-24):</label>
-                <input type="number" id="end-hour" min="0" max="24" required>
-
-                <label for="interval">Interval (Hours):</label>
-                <input type="number" id="interval" min="1" required>
-
-                <button  id="changecolor" type="submit">Create Slots</button>
-            </form>
-        </section>
 
         <section>
             <h2>View All Available Slots</h2>
@@ -38,33 +37,33 @@
         <section>
             <h2>View Available Slots</h2>
             <form id="view-slots-form">
-                <label for="view-doctor-name">Doctor Name:</label>
-                <input type="text" id="view-doctor-name" required>
+                <label for="view-doctor-name">Select Doctor Name:</label>
+                <select id="view-doctor-name" required>
+                    <option value="" disabled selected>Select a Doctor</option>
+                </select>
                 <button type="submit">View Slots</button>
             </form>
             <div id="available-slots" class="slot-container"></div>
-
         </section>
+        
 
         <section>
             <h2>Book a Slot</h2>
             <form id="book-slot-form">
-                <label for="book-doctor-name">Doctor Name:</label>
+                <label for="book-doctor-name">Enter Doctor Name:</label>
                 <select id="book-doctor-name" required>
                     <option value="" disabled selected>Select a doctor</option>
-                    <!-- Options will be populated dynamically -->
                 </select>
                 
                 <label for="available-slots">Select Slot:</label>
                 <select id="book-available-slots" required>
                     <option value="" disabled selected>Select a slot</option>
-                    <!-- Options will be populated dynamically -->
                 </select>
                 
-                <label for="user-name">Your Name:</label>
+                <label for="user-name">Enter Patient Name:</label>
                 <input type="text" id="user-name" required>
                 
-                <label for="book-date">Booking Date:</label>
+                <label for="book-date">Select Booking Date:</label>
                 <input type="date" id="book-date" required>
                 
                 <button type="submit">Book Slot</button>
@@ -79,21 +78,19 @@
         <section>
             <h2>Cancel Booking</h2>
             <form id="cancel-booking-form">
-                <label for="cancel-doctor-name">Doctor's Name:</label>
+                <label for="cancel-doctor-name">Enter Doctor Name:</label>
                 <select id="cancel-doctor-name" required>
-                    <!-- Options will be populated from your local storage -->
                 </select>
                 
-                <label for="cancel-available-slots">Available Slots:</label>
+                <label for="cancel-available-slots">Select Slot:</label>
                 <select id="cancel-available-slots" required>
                     <option value="" disabled selected>Select a slot</option>
-                    <!-- Options populated dynamically from selected doctor’s slots -->
                 </select>
             
-                <label for="cancel-user-name">Your Name:</label>
+                <label for="cancel-user-name">Enter Patient Name:</label>
                 <input type="text" id="cancel-user-name" required>
             
-                <label for="cancel-date">Booking Date:</label>
+                <label for="cancel-date">Select Booked Date:</label>
                 <input type="date" id="cancel-date" required>
             
                 <button type="submit">Cancel Booking</button>
@@ -120,7 +117,24 @@
     
     
     
-    
+     <footer>
+        <div class="footer-content">
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@doctorapp.com</p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>Learn more about our services and doctors.</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
     
     
     

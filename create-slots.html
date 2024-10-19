@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Time Slots</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
     <header>
@@ -12,7 +12,7 @@
             <div class="logo">
                 <img src="" id="logo-image" style="height: 50px;">
             </div>
-            
+            <img src="/images/pngtree-user-icon-image_1187018-removebg-preview.png" id="logo-image" >
             <div class="username-container">
                 <span id="logged-in-user">Logged in as: <span id="username-display">Username</span></span>
                 <div class="dropdown" id="dropdown-menu">
@@ -26,8 +26,8 @@
         <h1>Create Time Slots</h1>
         <form id="create-slots-form">
             <label for="doctor-name">Doctor Name:</label>
-            <select id="doctor-name" required>
-            </select>
+            <input type="text" id="doctor-name" required>
+
             <label for="start-hour">Start Time:</label>
             <input type="number" id="start-hour" min="0" max="23" required>
 
@@ -40,6 +40,16 @@
             <button type="submit">Create Time Slots</button>
         </form>
 
+        <h2>View Doctor's Slots</h2>
+        <label for="view-doctor-name">Select Doctor:</label>
+        <select id="view-doctor-name" required></select>
+        <button id="view-slots-btn">View Available Slots</button>
+
+        <div class="slots-container">
+            <h2>Available Slots</h2>
+            <ul id="slots-list"></ul>
+        </div>
+
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span id="closeModalBtn" class="close">&times;</span>
@@ -47,6 +57,7 @@
             </div>
         </div>
     </div>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section contact">
@@ -65,6 +76,6 @@
         </div>
     </footer>
 
-    <script src="create-slots.js"></script> <!-- Link to your new JS file -->
+    <script src="create-slots.js"></script> 
 </body>
 </html>

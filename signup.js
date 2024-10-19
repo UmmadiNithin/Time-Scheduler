@@ -64,7 +64,7 @@ signupForm.addEventListener('submit', (e) => {
                 name: name,
                 email: email,
                 password: password,
-                role: role // Storing the role
+                role: role 
             };
 
             existingUsers.push(user);

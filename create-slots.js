@@ -12,22 +12,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('create-slots-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        const doctorName = document.getElementById('doctor-name').value; // Manual input for doctor name
+        const doctorName = document.getElementById('doctor-name').value; 
+        const date = document.getElementById('date').value;
         const startHour = parseInt(document.getElementById('start-hour').value);
         const endHour = parseInt(document.getElementById('end-hour').value);
         const interval = parseInt(document.getElementById('interval').value);
 
         const schedule = JSON.parse(localStorage.getItem('schedule')) || {};
 
+        if (!schedule[doctorName]) {
+            schedule[doctorName] = {};
+        }
+        if (!schedule[doctorName][date]) {
+            schedule[doctorName][date] = [];
+        }
+
         for (let hour = startHour; hour < endHour; hour += interval) {
             const startTime = `${hour.toString().padStart(2, '0')}:00`;
             const endTime = `${(hour + interval).toString().padStart(2, '0')}:00`;
 
-            if (!schedule[doctorName]) {
-                schedule[doctorName] = [];
-            }
-
-            schedule[doctorName].push({
+            schedule[doctorName][date].push({
                 startTime: startTime,
                 endTime: endTime,
                 isAvailable: true
@@ -36,38 +40,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('schedule', JSON.stringify(schedule));
         openModal('Time slots created successfully!');
-
-        // Update the dropdown after creating slots
-        populateViewDoctorDropdown(); // Call to update the dropdown with new doctor names
+        populateViewDoctorDropdown(); 
     });
 
     const viewSlotsBtn = document.getElementById('view-slots-btn');
     viewSlotsBtn.addEventListener('click', () => {
         const selectedDoctor = document.getElementById('view-doctor-name').value;
-        displayAvailableSlots(selectedDoctor);
+        const selectedDate = document.getElementById('view-date').value;
+        displayAvailableSlots(selectedDoctor, selectedDate);
     });
 
-    const modal = document.getElementById("myModal");
-    const closeBtn = document.getElementById("closeModalBtn");
-
-    const openModal = (text) => {
-        const modalText = document.getElementById("modalText");
-        modalText.innerText = text;
-        modal.style.display = "block"; 
-    };
-
-    if (closeBtn) {
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        };
-    }
-
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
+    document.getElementById('view-all-slots-btn').addEventListener('click', () => {
+        const selectedDate = document.getElementById('view-all-date').value;
+        displayAllAvailableSlots(selectedDate);
+    });
 });
+
+const modal = document.getElementById("myModal");
+const closeBtn = document.getElementById("closeModalBtn");
+
+const openModal = (text) => {
+    if (!modal || !closeBtn) return;
+    const modalText = document.getElementById("modalText");
+    modalText.innerText = text;
+    modal.style.display = "block";
+};
+
+if (closeBtn) {
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    };
+}
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
 
 function populateViewDoctorDropdown() {
     const viewDoctorSelect = document.getElementById('view-doctor-name');
@@ -77,12 +86,11 @@ function populateViewDoctorDropdown() {
     defaultOption.value = '';
     defaultOption.textContent = 'Select Doctor';
     defaultOption.disabled = true; 
-    defaultOption.selected = true; 
+    defaultOption.selected = true;
     viewDoctorSelect.appendChild(defaultOption);
 
-    const schedule = JSON.parse(localStorage.getItem('schedule')) || {}; // Retrieve schedule from localStorage
+    const schedule = JSON.parse(localStorage.getItem('schedule')) || {};
 
-    // Extract doctor names from the schedule
     Object.keys(schedule).forEach(doctorName => {
         const option = document.createElement('option');
         option.value = doctorName; 
@@ -91,20 +99,20 @@ function populateViewDoctorDropdown() {
     });
 }
 
-function displayAvailableSlots(doctorName) {
+function displayAvailableSlots(doctorName, selectedDate) {
     const schedule = JSON.parse(localStorage.getItem('schedule')) || {};
     const slotsList = document.getElementById('slots-list');
 
     slotsList.innerHTML = '';
 
-    if (!schedule[doctorName]) {
+    if (!schedule[doctorName] || !schedule[doctorName][selectedDate]) {
         const li = document.createElement('li');
-        li.textContent = 'No slots available for this doctor.';
+        li.textContent = 'No slots available for this doctor on this date.';
         slotsList.appendChild(li);
         return;
     }
 
-    const slots = schedule[doctorName];
+    const slots = schedule[doctorName][selectedDate];
 
     slots.forEach(slot => {
         const div = document.createElement('div');
@@ -122,11 +130,55 @@ function displayAvailableSlots(doctorName) {
     });
 }
 
+function displayAllAvailableSlots(selectedDate) {
+    const schedule = JSON.parse(localStorage.getItem('schedule')) || {};
+    const allSlotsList = document.getElementById('all-slots-list');
+    allSlotsList.innerHTML = ''; 
+
+    let slotsFound = false;
+
+    Object.keys(schedule).forEach(doctorName => {
+        if (schedule[doctorName][selectedDate]) {
+            slotsFound = true;
+            
+            const doctorSlotsDiv = document.createElement('div');
+            doctorSlotsDiv.classList.add('doctor-slots');
+            
+            const doctorHeader = document.createElement('h3');
+            doctorHeader.textContent = `Doctor: ${doctorName}`;
+            doctorSlotsDiv.appendChild(doctorHeader);
+
+            const slots = schedule[doctorName][selectedDate];
+
+            slots.forEach(slot => {
+                const div = document.createElement('div');
+                div.classList.add('slot');
+                
+                if (slot.isAvailable) {
+                    div.classList.add('available');
+                    div.textContent = `${slot.startTime} - ${slot.endTime} (Available)`;
+                } else {
+                    div.classList.add('booked');
+                    div.textContent = `${slot.startTime} - ${slot.endTime} (Booked by: ${slot.bookedBy})`;
+                }
+
+                doctorSlotsDiv.appendChild(div);
+            });
+
+            allSlotsList.appendChild(doctorSlotsDiv);
+        }
+    });
+
+    if (!slotsFound) {
+        const li = document.createElement('li');
+        li.textContent = 'No available slots for any doctor on this date.';
+        allSlotsList.appendChild(li);
+    }
+}
+
 function displayLoggedInUsername() {
     const loggedInUsername = localStorage.getItem('loggedInUsername');
     const usernameElement = document.getElementById('logged-in-user');
-
-    console.log('Username from localStorage:', loggedInUsername); 
 
     if (loggedInUsername) {
         usernameElement.textContent = loggedInUsername; 

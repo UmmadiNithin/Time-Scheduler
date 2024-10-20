@@ -1,11 +1,23 @@
-body {
-    font-family: 'Poppins', sans-serif;
-background-color: #b8dbf5;
+html, body {
+    height: 100%;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
     color: #333;
 }
 
+body {
+    background-image: url('/images/bg.jpg'); /* Replace with the correct image path */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+
+
 .container {
+    
     max-width: 800px;
     margin: 100px auto;
     background-color: #ffffff;
@@ -196,7 +208,7 @@ section:nth-child(odd) {
 
 header {
     width: 100%;
-    background-color: #3498db;
+    background-color: #f0eded;
     padding: 18px 20px;
     height: 40px;
     color: white;
@@ -209,6 +221,23 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px; 
+    margin-left: 700px;     
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #1E5B7B; 
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-item:hover {
+    color: #F67E4C; 
 }
 
 .logo {
@@ -299,44 +328,58 @@ footer {
 }
 
 .dropdown a:hover {
-    background-color: #f1f1f1; 
+    background-color: #a9a7a7; 
 }
 
-#logo-image {
+#profile-logo {
     height: 40px;
-    margin-left: 550px;
+    margin-left: 110px;
+   
+    
 }
 
 
 
 
-.slots-container {
+
+
+.slots-container, .all-slots-container {
     margin-top: 20px;
 }
 
-#slots-list {
+.slot {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    display: inline-block;
+    width: 180px;
+    text-align: center;
+}
+
+.slot.available {
+    background-color: #c6f6d5; /* light green for available */
+}
+
+.slot.booked {
+    background-color: #f6c6c6; /* light red for booked */
+}
+
+.all-slots-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.all-slots-container ul {
     list-style-type: none;
     padding: 0;
 }
 
-.slot {
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    width: 120px; 
-    text-align: center;
-    transition: background-color 0.3s;
+.all-slots-container .doctor-slots {
+    margin-bottom: 20px;
 }
 
-.slot.available {
-    background-color: #d4edda; 
-    color: #155724; 
-}
-
-.slot.booked {
-    background-color: rgba(255, 0, 0, 0.2); 
-    color: #721c24;
-    text-decoration: line-through; 
+.all-slots-container .doctor-slots h3 {
+    color: #1e5b7b; /* Color for doctor name */
 }

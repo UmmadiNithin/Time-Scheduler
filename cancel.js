@@ -138,57 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-document.getElementById('book-slot-form').addEventListener('submit', function(event) {
-    event.preventDefault();
 
-    const doctorName = document.getElementById('book-doctor-name').value;
-    const selectedSlot = document.getElementById('book-available-slots').value;
-    const userName = document.getElementById('user-name').value;
-    const bookDate = document.getElementById('book-date').value;
-    const schedule = JSON.parse(localStorage.getItem('schedule')) || {};
-
-    console.log('Doctor Name:', doctorName); // Debugging: Check doctor name
-    console.log('Selected Slot:', selectedSlot); // Debugging: Check selected slot
-    console.log('User Name:', userName); // Debugging: Check user name
-    console.log('Booking Date:', bookDate); // Debugging: Check booking date
-    console.log('Schedule:', schedule); // Debugging: Check loaded schedule
-
-    // Check if schedule exists for the selected doctor
-    if (!schedule[doctorName]) {
-        return openModal(`No schedule found for Dr. ${doctorName}`);
-    }
-
-    const doctorSchedule = schedule[doctorName];
-
-    // Filter the schedule for the selected booking date
-    const slotsForDate = doctorSchedule.filter(slot => slot.date === bookDate);
-
-    console.log('Slots for Date:', slotsForDate); // Debugging: Check filtered slots
-
-    // Find the selected slot index in the filtered slots
-    const selectedSlotIndex = slotsForDate.findIndex(slot => `${slot.startTime}-${slot.endTime}` === selectedSlot);
-
-    console.log('Selected Slot Index:', selectedSlotIndex); // Debugging: Check selected slot index
-
-    if (selectedSlotIndex === -1) {
-        return openModal('Invalid slot selection');
-    }
-
-    if (!slotsForDate[selectedSlotIndex].isAvailable) {
-        return openModal('Slot already booked');
-    }
-
-    // Update the selected slot to mark it as booked
-    slotsForDate[selectedSlotIndex].isAvailable = false;
-    slotsForDate[selectedSlotIndex].bookedBy = userName;
-    slotsForDate[selectedSlotIndex].bookedDate = bookDate;
-
-    // Save the updated schedule back to local storage
-    localStorage.setItem('schedule', JSON.stringify(schedule));
-
-    openModal(`Appointment booked for ${userName} with Dr. ${doctorName} on ${bookDate}`);
-    populateDoctorDropdown();
-});
 
 // Function to populate available slots based on the selected doctor and date
 document.getElementById('book-doctor-name').addEventListener('change', updateAvailableSlots);
@@ -257,7 +207,43 @@ function updateAvailableSlots() {
 
 
 
+document.getElementById('cancel-booking-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
+    const doctorName = document.getElementById('cancel-doctor-name').value;
+    const selectedSlot = document.getElementById('cancel-available-slots').value;
+    const userName = document.getElementById('cancel-user-name').value;
+    const cancelDate = document.getElementById('cancel-date').value;
+    const schedule = JSON.parse(localStorage.getItem('schedule')) || {};
+
+    if (!schedule[doctorName]) {
+        return openModal(`No schedule found for Dr. ${doctorName}`);
+    }
+
+    const doctorSchedule = schedule[doctorName];
+    const selectedSlotIndex = doctorSchedule.findIndex(slot => `${slot.startTime}-${slot.endTime}` === selectedSlot);
+
+    if (selectedSlotIndex === -1) {
+        return openModal('Invalid slot selection');
+    }
+
+    if (doctorSchedule[selectedSlotIndex].isAvailable) {
+        return openModal('Slot is not currently booked');
+    }
+
+    if (doctorSchedule[selectedSlotIndex].bookedBy !== userName || doctorSchedule[selectedSlotIndex].bookedDate !== cancelDate) {
+        return openModal('Booking details do not match');
+    }
+
+    doctorSchedule[selectedSlotIndex].isAvailable = true;
+    doctorSchedule[selectedSlotIndex].bookedBy = '';
+    doctorSchedule[selectedSlotIndex].bookedDate = '';
+
+    localStorage.setItem('schedule', JSON.stringify(schedule));
+
+    openModal(`Booking canceled for ${userName} with Dr. ${doctorName}`);
+    populateDoctorDropdown();
+});
 
 function populateViewDoctorDropdown() {
     const viewDoctorSelect = document.getElementById('view-doctor-name');
@@ -280,34 +266,5 @@ function populateViewDoctorDropdown() {
     });
 }
 
-function displayAvailableSlots(doctorName, selectedDate) {
-    const schedule = JSON.parse(localStorage.getItem('schedule')) || {};
-    const slotsList = document.getElementById('slots-list');
 
-    slotsList.innerHTML = '';
-
-    if (!schedule[doctorName] || !schedule[doctorName][selectedDate]) {
-        const li = document.createElement('li');
-        li.textContent = 'No slots available for this doctor on this date.';
-        slotsList.appendChild(li);
-        return;
-    }
-
-    const slots = schedule[doctorName][selectedDate];
-
-    slots.forEach(slot => {
-        const div = document.createElement('div');
-        div.classList.add('slot');
-
-        if (slot.isAvailable) {
-            div.classList.add('available');
-            div.textContent = `${slot.startTime} - ${slot.endTime} (Available)`;
-        } else {
-            div.classList.add('booked');
-            div.textContent = `${slot.startTime} - ${slot.endTime} (Booked by: ${slot.bookedBy})`;
-        }
-
-        slotsList.appendChild(div);
-    });
-}
 

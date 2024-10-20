@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://example.com/your-background-image.jpg');     
+    background-image: url('/images/abc.jpg');     
     background-size: cover;
     background-position: center;
     color: #fff;

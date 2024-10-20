@@ -35,37 +35,25 @@
 
     <div class="container">
 
+
+
         <section>
-            <h2>Book a Slot</h2>
-            <form id="book-slot-form">
-                <label for="calendar-date">Enter Date:</label>
-                <input type="date" id="calendar-date" required>
-
-                <label for="book-doctor-name">Enter Doctor Name:</label>
-                <select id="book-doctor-name" required>
-                    <option value="" disabled selected>Select a doctor</option>
-                </select>
-
-                <label for="available-slots">Select Slot:</label>
-                <select id="book-available-slots" required>
-                    <option value="" disabled selected>Select a slot</option>
-                </select>
-                
-                <label for="user-name">Enter Patient Name:</label>
-                <input type="text" id="user-name" required>
-                
-                <label for="book-date">Select Booking Date:</label>
-                <input type="date" id="book-date" required>
-        
-                
-                <button type="submit">Book Slot</button>
-            </form>
+           
+            <h2>View Doctor's Slots</h2>
+            <label for="view-doctor-name">Select Doctor:</label>
+            <select id="view-doctor-name" required></select>
+    
+            <label for="view-date">Select Date:</label>
+            <input type="date" id="view-date" required>
+    
+            <button id="view-slots-btn">View Available Slots</button>
+    
+            <div class="slots-container">
+                <h2>Available Slots</h2>
+                <ul id="slots-list"></ul>
+            </div>
         </section>
         
-        
-        
-   
-    </div>
 
     
 
@@ -82,9 +70,8 @@
             
         </div>
     </div>
-    
-    
-    
+    </div>
+
      <footer>
         <div class="footer-content">
             <div class="footer-section contact">

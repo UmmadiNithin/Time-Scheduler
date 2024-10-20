@@ -42,9 +42,9 @@ loginForm.addEventListener('submit', (event) => {
         if (user.role === 'doctor') {
             window.location.href = 'create-slots.html';  
                 } else if (user.role === 'patient') {
-            window.location.href = 'index.html'; 
+            window.location.href = '/main.html'; 
         } else {
-            window.location.href = 'index.html';  
+            window.location.href = '/main.html';  
         }
     }
 });

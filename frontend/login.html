@@ -9,7 +9,7 @@ body {
     font-family: Arial, sans-serif;
     height: 100vh;
     margin: 0;
-    background-image: url('/images/Blue\ and\ White\ Simple\ and\ Professional\ Hospital\ Training\ Presentation.jpg'); /* Replace with the path to your image */
+    background-image: url('/frontend/images/Blue\ and\ White\ Simple\ and\ Professional\ Hospital\ Training\ Presentation.jpg'); /* Replace with the path to your image */
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -19,7 +19,7 @@ body {
 }
 
         .form-container {
-            background-color: #fff;
+            background-color: rgba(254, 255, 255, 0.5); 
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -31,15 +31,16 @@ body {
         }
         input[type="email"], input[type="password"] {
             width: 93%;
+            background-color: rgb(236, 235, 235);
             padding: 10px;
             margin: 8px 0;
-            border: 1px solid #ccc;
+            border: 1px solid #bbbaba;
             border-radius: 4px;
         }
         button {
             width: 100%;
             padding: 10px;
-            background-color: #3498db;
+            background-color: #1e98e9;
             color: white;
             border: none;
             border-radius: 4px;
@@ -70,7 +71,7 @@ body {
                 <div id="login-password-error" class="error"></div>
             </div>
             <button type="submit">Login</button>
-            <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+            <p>Don't have an account? <a href="/frontend/signup.html">Sign up here</a></p>
         </form>
     </div>
 

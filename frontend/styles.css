@@ -6,12 +6,12 @@ html, body {
 }
 
 body {
-    background-image: url('/images/bg.jpg'); /* Replace with the correct image path */
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-attachment: fixed; /* Keeps the background fixed when scrolling */
-    overflow-x: hidden; /* Prevents horizontal scrolling */
+    background-image: url('/frontend/images/bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    overflow-x: hidden; 
 }
 
 
@@ -359,11 +359,11 @@ footer {
 }
 
 .slot.available {
-    background-color: #c6f6d5; /* light green for available */
+    background-color: #c6f6d5; 
 }
 
 .slot.booked {
-    background-color: #f6c6c6; /* light red for booked */
+    background-color: #f6c6c6; 
 }
 
 .all-slots-container {
@@ -381,5 +381,54 @@ footer {
 }
 
 .all-slots-container .doctor-slots h3 {
-    color: #1e5b7b; /* Color for doctor name */
+    color: #1e5b7b; 
+}
+
+
+.slots-container ul, .all-slots-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.doctor-section {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+
+.doctor-section h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.slot-item {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 130px; 
+    text-align: center;
+    font-size: 14px;
+}
+
+
+.slot-available {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.slot-booked {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    text-decoration: line-through;
+}
+
+.slot-available:hover, .slot-booked:hover {
+    cursor: pointer;
+    opacity: 0.9;
 }

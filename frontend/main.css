@@ -10,7 +10,7 @@ main {
 }
 
 body {
-    background-image: url('/images/bg.jpg'); 
+    background-image: url('/frontend/images/bg.jpg'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -21,7 +21,7 @@ body {
 .intro {
     text-align: center; 
     margin: 20px 0;
-    background-color: rgba(254, 255, 255, 0.5); /* Light blue-white background */
+    background-color: rgba(254, 255, 255, 0.5); 
     padding: 20px; 
     border-radius: 8px; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
@@ -80,11 +80,11 @@ button:hover {
 
 
 a {
-    text-decoration: none; /* Remove underline from links */
+    text-decoration: none; 
 }
 
 a button {
-    width: 100%; /* Make the button fill the box */
+    width: 100%; 
 }
 
 header {

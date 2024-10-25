@@ -3,16 +3,14 @@ const nameError = document.getElementById('name-error');
 const emailError = document.getElementById('email-error');
 const passwordError = document.getElementById('password-error');
 const confirmPasswordError = document.getElementById('confirm-password-error');
-const roleError = document.getElementById('role-error');
 
-signupForm.addEventListener('submit', (e) => {
+signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('signup-name').value.trim();
     const email = document.getElementById('signup-email').value.trim();
     const password = document.getElementById('signup-password').value.trim();
     const confirmPassword = document.getElementById('signup-confirm-password').value.trim();
-    const role = document.getElementById('signup-role').value;
 
     let isValid = true;
 
@@ -45,33 +43,34 @@ signupForm.addEventListener('submit', (e) => {
         confirmPasswordError.style.display = 'none';
     }
 
-    if (role === "") {
-        roleError.style.display = 'block';
-        isValid = false;
-    } else {
-        roleError.style.display = 'none';
-    }
-
     if (isValid) {
-        const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
-        const emailExists = existingUsers.some(user => user.email === email);
+        const userData = {
+            name: name,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        };
 
-        if (emailExists) {
-            emailError.textContent = 'Email already exists.';
-            emailError.style.display = 'block';
-        } else {
-            const user = {
-                name: name,
-                email: email,
-                password: password,
-                role: role 
-            };
+        try {
+            const response = await fetch('http://localhost:3000/api/patient/signup', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
 
-            existingUsers.push(user);
-            localStorage.setItem('users', JSON.stringify(existingUsers));
+            const data = await response.json();
 
-            alert('Signup successful!');
-            window.location.href = 'login.html'; 
+            if (response.ok) {
+                alert('Signup successful!');
+                window.location.href = 'login.html'; 
+            } else {
+                alert(data.message || 'Signup failed. Please try again.');
+            }
+        } catch (error) {
+            alert('An error occurred while signing up. Please try again.');
+            console.error('Error during signup:', error);
         }
     }
 });

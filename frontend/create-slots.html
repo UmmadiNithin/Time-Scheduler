@@ -9,22 +9,17 @@
 <body>
     <header>
         <div class="header-content">
-    
             <div class="logo">
-                <img src="/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
             </div>
-    
             <nav class="nav-links">
-                <a href="/main.html" class="nav-item">Home</a>
-                <a href="/main.html" class="nav-item">About</a>
-                <a href="/main.html" class="nav-item">Contact</a>
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
             </nav>
-    
-            <img src="/images/logo2-removebg-preview.png" id="profile-logo">
-    
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
             <div class="username-container">
                 <span id="logged-in-user" style="color: rgb(30, 91, 123);"> <span id="username-display">Username</span></span>
-    
                 <div class="dropdown" id="dropdown-menu">
                     <a href="#" id="logout-btn">Logout</a>
                 </div>
@@ -56,15 +51,15 @@
         <h2>View Doctor's Slots</h2>
         <label for="view-doctor-name">Select Doctor:</label>
         <select id="view-doctor-name" required></select>
-
+        
         <label for="view-date">Select Date:</label>
         <input type="date" id="view-date" required>
-
+        
         <button id="view-slots-btn">View Available Slots</button>
-
-        <div class="slots-container">
+        
+        <div class="slots-container" id="slots-container">
             <h2>Available Slots</h2>
-            <ul id="slots-list"></ul>
+            <ul id="slots-list" class="slot-list"></ul>
         </div>
 
         <h2>View All Available Slots</h2>
@@ -73,11 +68,11 @@
         
         <button id="view-all-slots-btn">View All Available Slots</button>
         
-        <div class="all-slots-container">
+        <div class="all-slots-container" id="all-slots-container">
+            <h2>All Available Slots</h2>
             <ul id="all-slots-list"></ul>
         </div>
         
-    
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span id="closeModalBtn" class="close">&times;</span>

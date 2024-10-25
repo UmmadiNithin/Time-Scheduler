@@ -9,22 +9,17 @@
 <body>
     <header>
         <div class="header-content">
-    
             <div class="logo">
-                <img src="/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
             </div>
-    
             <nav class="nav-links">
-                <a href="/main.html" class="nav-item">Home</a>
-                <a href="/main.html" class="nav-item">About</a>
-                <a href="/main.html" class="nav-item">Contact</a>
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
             </nav>
-    
-            <img src="/images/logo2-removebg-preview.png" id="profile-logo">
-    
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
             <div class="username-container">
                 <span id="logged-in-user" style="color: rgb(30, 91, 123);"> <span id="username-display">Username</span></span>
-    
                 <div class="dropdown" id="dropdown-menu">
                     <a href="#" id="logout-btn">Logout</a>
                 </div>
@@ -61,6 +56,13 @@
             </div>
         </div>
     </footer>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
 
     <script src="viewAll.js"></script>
 </body>

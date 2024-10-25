@@ -9,32 +9,25 @@
 <body>
     <header>
         <div class="header-content">
-    
             <div class="logo">
-                <img src="/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
             </div>
-    
             <nav class="nav-links">
-                <a href="/main.html" class="nav-item">Home</a>
-                <a href="/main.html" class="nav-item">About</a>
-                <a href="/main.html" class="nav-item">Contact</a>
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
             </nav>
-    
-            <img src="/images/logo2-removebg-preview.png" id="profile-logo">
-    
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
             <div class="username-container">
-                <span id="logged-in-user" style="color: rgb(30, 91, 123);"> <span id="username-display">Username</span></span>
-    
+                <span id="logged-in-user" style="color: rgb(30, 91, 123);"><span id="username-display">Username</span></span>
                 <div class="dropdown" id="dropdown-menu">
                     <a href="#" id="logout-btn">Logout</a>
                 </div>
             </div>
         </div>
     </header>
-    
 
     <div class="container">
-
         <section>
             <h2>Book a Slot</h2>
             <form id="book-slot-form">
@@ -46,46 +39,31 @@
                     <option value="" disabled selected>Select a doctor</option>
                 </select>
 
-                <label for="available-slots">Select Slot:</label>
+                <label for="book-available-slots">Select Slot:</label>
                 <select id="book-available-slots" required>
                     <option value="" disabled selected>Select a slot</option>
                 </select>
-                
+
                 <label for="user-name">Enter Patient Name:</label>
                 <input type="text" id="user-name" required>
-                
-                <label for="book-date">Select Booking Date:</label>
-                <input type="date" id="book-date" required>
-        
-                
+
                 <button type="submit">Book Slot</button>
             </form>
         </section>
-        
-        
-        
-   
     </div>
 
-    
-
-    <div id="myModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);">
-        <div class="modal-content" style="background-color: #ffffff; margin: 15% auto; padding: 10px; border: 1px solid #dcdfe3; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); width: 50%; max-width: 300px;">
-            
-            <div class="modal-header" style="display: flex; justify-content: flex-end; align-items: center; padding-bottom: 5px; position: relative;">
-                <button id="closeModalBtn" style="background: none; border: none; color: #3498db; font-size: 1.5rem; cursor: pointer;">&times;</button>
+    <div id="myModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="closeModalBtn">&times;</button>
             </div>
-            
-            <div class="modal-body" style="display: flex; justify-content: center; align-items: center; padding: 5px; color: #333; font-size: 1rem;">
+            <div class="modal-body">
                 <p id="modalText">Your modal content goes here.</p>
             </div>
-            
         </div>
     </div>
-    
-    
-    
-     <footer>
+
+    <footer>
         <div class="footer-content">
             <div class="footer-section contact">
                 <h4>Contact Us</h4>
@@ -102,11 +80,6 @@
             </div>
         </div>
     </footer>
-
-    
-    
-    
-
 
     <script src="scripts.js"></script>
 </body>

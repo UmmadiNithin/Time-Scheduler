@@ -11,16 +11,16 @@
         <div class="header-content">
     
             <div class="logo">
-                <img src="/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
             </div>
     
             <nav class="nav-links">
-                <a href="/main.html" class="nav-item">Home</a>
-                <a href="/main.html" class="nav-item">About</a>
-                <a href="/main.html" class="nav-item">Contact</a>
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
             </nav>
     
-            <img src="/images/logo2-removebg-preview.png" id="profile-logo">
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
     
             <div class="username-container">
                 <span id="logged-in-user" style="color: rgb(30, 91, 123);"> <span id="username-display">Username</span></span>
@@ -40,18 +40,18 @@
         <section>
            
             <h2>View Doctor's Slots</h2>
-            <label for="view-doctor-name">Select Doctor:</label>
-            <select id="view-doctor-name" required></select>
-    
-            <label for="view-date">Select Date:</label>
-            <input type="date" id="view-date" required>
-    
-            <button id="view-slots-btn">View Available Slots</button>
-    
-            <div class="slots-container">
-                <h2>Available Slots</h2>
-                <ul id="slots-list"></ul>
-            </div>
+        <label for="view-doctor-name">Select Doctor:</label>
+        <select id="view-doctor-name" required></select>
+        
+        <label for="view-date">Select Date:</label>
+        <input type="date" id="view-date" required>
+        
+        <button id="view-slots-btn">View Available Slots</button>
+        
+        <div class="slots-container" id="slots-container">
+            <h2>Available Slots</h2>
+            <ul id="slots-list" class="slot-list"></ul>
+        </div>
         </section>
         
 
@@ -95,6 +95,6 @@
     
 
 
-    <script src="scripts.js"></script>
+    <script src="viewslots.js"></script>
 </body>
 </html>

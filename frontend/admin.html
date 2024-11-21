@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+            </div>
+            <nav class="nav-links">
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
+            </nav>
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
+            <div class="username-container">
+                <span id="logged-in-user" style="color: rgb(30, 91, 123);">
+                    <span id="username-display">Username</span>
+                </span>
+                <div class="dropdown" id="dropdown-menu">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <h2 style="color: #dcdfe3;">Admin Dashboard</h2>
+
+    <div class="container">
+        <section>
+            <h2>Create Doctor</h2>
+            <form id="create-doctor-form">
+                <label for="doctorName">Enter Name:</label>
+                <input type="text" id="doctorName" name="doctorName" placeholder="Enter Doctor's Name" required>
+                
+                <label for="doctorEmail">Enter Email:</label>
+                <input type="email" id="doctorEmail" name="doctorEmail" placeholder="Enter Doctor's Email" required>
+                
+                <label for="login-password">Enter Password:</label>
+                <input type="password" id="login-password" placeholder="Enter Password" required>
+                <div id="login-password-error" class="error"></div>
+                
+                <label for="role">Select Role:</label>
+                <select id="role" name="role" required>
+                    <option value="doctor">Doctor</option>
+                </select>
+
+                <button type="submit">Create Doctor</button>
+            </form>
+        </section>
+    </div>
+
+    <div id="myModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);">
+        <div class="modal-content" style="background-color: #ffffff; margin: 15% auto; padding: 10px; border: 1px solid #dcdfe3; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); width: 50%; max-width: 300px;">
+            <div class="modal-header" style="display: flex; justify-content: flex-end; align-items: center; padding-bottom: 5px; position: relative;">
+                <button id="closeModalBtn" style="background: none; border: none; color: #3498db; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div class="modal-body" style="display: flex; justify-content: center; align-items: center; padding: 5px; color: #333; font-size: 1rem;">
+                <p id="modalText">Your modal content goes here.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@doctorapp.com</p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>Learn more about our services and doctors.</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById('create-doctor-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const doctorName = document.getElementById('doctorName').value;
+            const doctorEmail = document.getElementById('doctorEmail').value;
+            const password = document.getElementById('login-password').value;
+            const role = document.getElementById('role').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/patient/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: doctorName,
+                        email: doctorEmail,
+                        password: password,
+                        confirmPassword: password,  
+                        role: role
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('modalText').innerText = data.message;
+                    document.getElementById('myModal').style.display = 'block';
+                    document.getElementById('create-doctor-form').reset();
+                } else {
+                    throw new Error(data.message);
+                }
+            } catch (error) {
+                document.getElementById('modalText').innerText = error.message;
+                document.getElementById('myModal').style.display = 'block';
+            }
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+    
+            <div class="logo">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+            </div>
+    
+            <nav class="nav-links">
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
+            </nav>
+    
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
+    
+            <div class="username-container">
+                <span id="logged-in-user" style="color: rgb(30, 91, 123);"> <span id="username-display">Username</span></span>
+    
+                <div class="dropdown" id="dropdown-menu">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <div class="container">
+
+
+
+        <section>
+           
+            <h2>View Doctor's Slots</h2>
+        <label for="view-doctor-name">Select Doctor:</label>
+        <select id="view-doctor-name" required></select>
+        
+        <label for="view-date">Select Date:</label>
+        <input type="date" id="view-date" required>
+        
+        <button id="view-slots-btn">View Available Slots</button>
+        
+        <div class="slots-container" id="slots-container">
+            <h2>Available Slots</h2>
+            <ul id="slots-list" class="slot-list"></ul>
+        </div>
+        </section>
+        
+
+    
+
+    <div id="myModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);">
+        <div class="modal-content" style="background-color: #ffffff; margin: 15% auto; padding: 10px; border: 1px solid #dcdfe3; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); width: 50%; max-width: 300px;">
+            
+            <div class="modal-header" style="display: flex; justify-content: flex-end; align-items: center; padding-bottom: 5px; position: relative;">
+                <button id="closeModalBtn" style="background: none; border: none; color: #3498db; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            
+            <div class="modal-body" style="display: flex; justify-content: center; align-items: center; padding: 5px; color: #333; font-size: 1rem;">
+                <p id="modalText">Your modal content goes here.</p>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+
+     <footer>
+        <div class="footer-content">
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@doctorapp.com</p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>Learn more about our services and doctors.</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    
+    
+    
+
+
+    <script src="viewslots.js"></script>
+</body>
+</html>

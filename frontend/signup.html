@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/frontend/images/Blue\ and\ White\ Simple\ and\ Professional\ Hospital\ Training\ Presentation.jpg'); /* Replace with the path to your image */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 400px;
+}
+
+
+
+        .form-container {
+            background-color: rgba(254, 255, 255, 0.5); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"], input[type="email"], input[type="password"], select {
+            width: 93%;
+            background-color: rgb(236, 235, 235);
+
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1d90dd;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0a4973;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+        <label for="signup-name">Enter Full Name:</label>
+        <input type="text" id="signup-name" placeholder="Full Name" required>
+        <div id="name-error" class="error">Name is required.</div>
+        
+        <label for="signup-email">Enter Email:</label>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <div id="email-error" class="error">Invalid email format.</div>
+        
+        <label for="signup-password">Enter Password:</label>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <div id="password-error" class="error">Password must be at least 6 characters.</div>
+        
+        <label for="signup-confirm-password">Confirm Password:</label>
+        <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+        <div id="confirm-password-error" class="error">Passwords do not match.</div>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<script src="signup.js"></script>
+
+</body>
+</html>

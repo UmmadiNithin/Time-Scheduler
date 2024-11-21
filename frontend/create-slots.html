@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Time Slots</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+            </div>
+            <nav class="nav-links">
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
+            </nav>
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
+            <div class="username-container">
+                <span id="logged-in-user" style="color: rgb(30, 91, 123);"> <span id="username-display">Username</span></span>
+                <div class="dropdown" id="dropdown-menu">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Create Time Slots</h1>
+        <form id="create-slots-form">
+            <label for="doctor-name">Doctor Name:</label>
+            <input type="text" id="doctor-name" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="start-hour">Start Time:</label>
+            <input type="number" id="start-hour" min="0" max="23" required>
+
+            <label for="end-hour">End Time:</label>
+            <input type="number" id="end-hour" min="0" max="23" required>
+
+            <label for="interval">Interval (in hours):</label>
+            <input type="number" id="interval" required>
+
+            <button type="submit">Create Time Slots</button>
+        </form>
+        
+        <h2>View Doctor's Slots</h2>
+        <label for="view-doctor-name">Select Doctor:</label>
+        <select id="view-doctor-name" required></select>
+        
+        <label for="view-date">Select Date:</label>
+        <input type="date" id="view-date" required>
+        
+        <button id="view-slots-btn">View Available Slots</button>
+        
+        <div class="slots-container" id="slots-container">
+            <h2>Available Slots</h2>
+            <ul id="slots-list" class="slot-list"></ul>
+        </div>
+
+        <h2>View All Available Slots</h2>
+        <label for="view-all-date">Select Date:</label>
+        <input type="date" id="view-all-date" required>
+        
+        <button id="view-all-slots-btn">View All Available Slots</button>
+        
+        <div class="all-slots-container" id="all-slots-container">
+            <h2>All Available Slots</h2>
+            <ul id="all-slots-list"></ul>
+        </div>
+        
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModalBtn" class="close">&times;</span>
+                <p id="modalText"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@doctorapp.com</p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>Learn more about our services and doctors.</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="create-slots.js"></script> 
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/frontend/images/bbb-removebg-preview.png" id="Logo" style="height: 50px;">
+            </div>
+            <nav class="nav-links">
+                <a href="/frontend/main.html" class="nav-item">Home</a>
+                <a href="/frontend/main.html" class="nav-item">About</a>
+                <a href="/frontend/main.html" class="nav-item">Contact</a>
+            </nav>
+            <img src="/frontend/images/logo2-removebg-preview.png" id="profile-logo">
+            <div class="username-container">
+                <span id="logged-in-user" style="color: rgb(30, 91, 123);"> <span id="username-display">Username</span></span>
+                <div class="dropdown" id="dropdown-menu">
+                    <a href="#" id="logout-btn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>View All Available Slots</h2>
+            <label for="view-all-date">Select Date:</label>
+            <input type="date" id="view-all-date" required>
+            <button id="view-all-slots-btn">View All Available Slots</button>
+            <div class="all-slots-container">
+                <ul id="all-slots-list"></ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@doctorapp.com</p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>Learn more about our services and doctors.</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <script src="viewAll.js"></script>
+</body>
+</html>
